@@ -1,0 +1,33 @@
+import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:dokitamobile/app/constants/app_sizes.dart';
+import 'package:dokitamobile/app/translations/app_text.dart';
+import 'package:dokitamobile/app/constants/app_constants.dart';
+
+class IntroPage2 extends StatelessWidget {
+  const IntroPage2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.paddingMd),
+          child: Column(
+            children: [
+              Gap(150),
+              Image.asset(AppConstants.pushNotificationsRafiki),
+              Gap(20),
+              Text(
+                AppText.notificationsIntelligentes,
+                style: Get.textTheme.bodyLarge,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
