@@ -39,7 +39,7 @@ class MedecinInfoStep extends GetView<RegisterStepController> {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(AppSizes.paddingMd),
+              padding: EdgeInsets.all(AppSizes.paddingMd),
               child: Column(
                 children: [
                   CustomTextInputField(
@@ -86,7 +86,7 @@ class MedecinInfoStep extends GetView<RegisterStepController> {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(AppSizes.paddingMd),
+              padding: EdgeInsets.all(AppSizes.paddingMd),
               child: Column(
                 children: [
                   CustomTextInputField(

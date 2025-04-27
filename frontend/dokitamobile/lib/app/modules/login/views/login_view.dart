@@ -20,12 +20,13 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
                   padding: EdgeInsets.all(AppSizes.paddingLg),
                   child: Column(
                     children: [
@@ -37,8 +38,8 @@ class LoginView extends GetView<LoginController> {
                           size: AppSizes.iconLg,
                         ),
                       ),
-                      Gap(40.h),
-
+                      Gap(30.h),
+                
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -48,10 +49,10 @@ class LoginView extends GetView<LoginController> {
                           ),
                         ),
                       ),
-                      Gap(40.h),
-
+                      Gap(30.h),
+                
                       Image.asset(AppConstants.appLogo, height: 115.h),
-                      Gap(60.h),
+                      Gap(30.h),
                       Form(
                         key: controller.formKey,
                         child: Column(
@@ -65,7 +66,7 @@ class LoginView extends GetView<LoginController> {
                                   (email) => Validators.validateEmail(email),
                             ),
                             Gap(25.h),
-
+                
                             // mot de passe
                             Obx(
                               () => CustomTextInputField(
@@ -86,115 +87,112 @@ class LoginView extends GetView<LoginController> {
                                 ),
                               ),
                             ),
-                            Gap(25.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(Routes.FORGOT_PASSWORD);
-                                  },
-                                  child: Text(
-                                    "Mot de passe oublié?",
-                                    textAlign: TextAlign.right,
-                                    style: GoogleFonts.roboto(
-                                      fontSize: AppSizes.fontSizeMedium,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
                           ],
+                        ),
+                      ),
+                      Gap(25.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.FORGOT_PASSWORD);
+                            },
+                            child: Text(
+                              "Mot de passe oublié?",
+                              textAlign: TextAlign.right,
+                              style: GoogleFonts.roboto(
+                                fontSize: AppSizes.fontSizeMedium,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Gap(25.h),
+        
+              Container(
+                width: double.maxFinite.h,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50.h),
+                    topRight: Radius.circular(50.h),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(AppSizes.paddingLg),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: double.maxFinite,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 15.h),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          onPressed:
+                              controller.isLoading.value
+                                  ? null
+                                  : () {
+                                    if (controller.formKey.currentState!
+                                        .validate()) {
+                                      controller.login();
+                                    }
+                                  },
+                          child: Obx(
+                            () =>
+                                controller.isLoading.value
+                                    ? Loader()
+                                    : Text("Se connecter"),
+                          ),
+                        ),
+                      ),
+                      Gap(15.h),
+        
+                      Text(
+                        "Or",
+                        style: Get.textTheme.bodyLarge!.copyWith(
+                          color: Get.theme.colorScheme.primary,
+                        ),
+                      ),
+        
+                      Gap(15.h),
+                      SizedBox(
+                        width: double.maxFinite,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Get.toNamed(Routes.CHOOSE_ROLE);
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                              color: AppColors.primaryColor,
+                              width: 2,
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.h),
+                            ),
+                          ),
+                          child: Text(
+                            "Créer un compte",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                Gap(30.h),
-
-                Container(
-                  width: double.maxFinite,
-                  height: Get.height.h  / 2.7,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.h),
-                      topRight: Radius.circular(50.h),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSizes.paddingLg),
-                    child: Column(
-                      children: [
-                        Gap(70.h),
-                        SizedBox(
-                          width: double.maxFinite,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(vertical: 20.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed:
-                                controller.isLoading.value
-                                    ? null
-                                    : () {
-                                      if (controller.formKey.currentState!
-                                          .validate()) {
-                                        controller.login();
-                                      }
-                                    },
-                            child: Obx(
-                              () =>
-                                  controller.isLoading.value
-                                      ? Loader()
-                                      : Text("Se connecter"),
-                            ),
-                          ),
-                        ),
-                        Gap(20),
-
-                        Text(
-                          "Or",
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: 16,
-                          ),
-                        ),
-
-                        const Gap(20),
-                        SizedBox(
-                          width: double.maxFinite,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Get.toNamed(Routes.CHOOSE_ROLE);
-                            },
-                            style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                color: AppColors.primaryColor,
-                                width: 2,
-                              ),
-                              padding: EdgeInsets.symmetric(vertical: 18.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Text(
-                              "Créer un compte",
-                              style: Get.textTheme.bodyLarge!.copyWith(
-                                color: AppColors.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

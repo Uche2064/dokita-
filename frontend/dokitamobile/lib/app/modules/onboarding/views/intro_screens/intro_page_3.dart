@@ -2,6 +2,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:dokitamobile/app/constants/app_sizes.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dokitamobile/app/translations/app_text.dart';
 import 'package:dokitamobile/app/constants/app_constants.dart';
 
@@ -13,12 +14,12 @@ class IntroPage3 extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(AppSizes.paddingMd),
+          padding: EdgeInsets.all(AppSizes.paddingMd),
           child: Column(
             children: [
-              Gap(150),
+              Gap(100.h),
               Image.asset(AppConstants.saveMedicalRecord),
-              Gap(20),
+              Gap(20.h),
               Text(
                 AppText.stockageSecurise,
                 style: Get.textTheme.bodyLarge,

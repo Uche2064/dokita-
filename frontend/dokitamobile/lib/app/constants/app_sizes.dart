@@ -1,43 +1,54 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class AppSizes {
   AppSizes._();
 
-  static const double paddingXs = 4.0;
-  static const double paddingSm = 8.0;
-  static const double paddingMd = 16.0;
-  static const double paddingLg = 24.0;
-  static const double paddingXl = 32.0;
+  // Paddings
+  static double get paddingXs => 4.h;
+  static double get paddingSm => 8.h;
+  static double get paddingMd => 16.h;
+  static double get paddingLg => 24.h;
+  static double get paddingXl => 32.h;
 
-  static const double marginXs = 4.0;
-  static const double marginSm = 8.0;
-  static const double marginMd = 16.0;
-  static const double marginLg = 24.0;
-  static const double marginXl = 32.0;
+  // Margins
+  static double get marginXs => 4.h;
+  static double get marginSm => 8.h;
+  static double get marginMd => 16.h;
+  static double get marginLg => 24.h;
+  static double get marginXl => 32.h;
 
-  static const double fontXs = 12.0;
-  static const double fontSm = 14.0;
-  static const double fontMd = 16.0;
-  static const double fontLg = 20.0;
-  static const double fontXl = 24.0;
-  static const double fontXxl = 32.0;
+  // Fonts
+  static double get fontXs => 12.h;
+  static double get fontSm => 14.h;
+  static double get fontMd => 16.h;
+  static double get fontLg => 20.h;
+  static double get fontXl => 24.h;
+  static double get fontXxl => 32.h;
 
-  static const double radiusSm = 6.0;
-  static const double radiusMd = 10.0;
-  static const double radiusLg = 16.0;
-  static const double radiusXl = 24.0;
+  // Radius
+  static double get radiusSm => 6.r;
+  static double get radiusMd => 10.r;
+  static double get radiusLg => 16.r;
+  static double get radiusXl => 24.r;
 
-  static const double iconSm = 16.0;
-  static const double iconMd = 24.0;
-  static const double iconLg = 32.0;
-  static const double iconXl = 48.0;
+  // Icon Sizes
+  static double get iconSm => 16.h;
+  static double get iconMd => 24.h;
+  static double get iconLg => 32.h;
+  static double get iconXl => 48.h;
 
-  static const double buttonHeight = 48.0;
+  // Button
+  static double get buttonHeight => 48.h;
 
-  static const double appBarHeight = 56.0;
+  // AppBar
+  static double get appBarHeight => 56.h;
 
-  static const double cardElevation = 2.0;
+  // Card Elevation
+  static double get cardElevation => 2.h;
 
-  static const double fontSizeSmall = 12.0;
-  static const double fontSizeMedium = 16.0;
-  static const double fontSizeLarge = 20.0;
-  static const double fontSizeXLarge = 24.0;
+  // Legacy Font Sizes
+  static double get fontSizeSmall => 12.h;
+  static double get fontSizeMedium => 16.h;
+  static double get fontSizeLarge => 20.h;
+  static double get fontSizeXLarge => 24.h;
 }

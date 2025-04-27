@@ -31,11 +31,11 @@ void main() async {
 
   runApp(
     ScreenUtilInit(
-      designSize: const Size(440, 956),
+      designSize: const Size(375, 812),
       ensureScreenSize: true,
       splitScreenMode: true,
       minTextAdapt: true,
-      child: GetMaterialApp(
+      builder: (context, child) => GetMaterialApp(
         title: "Dokita+",
         debugShowCheckedModeBanner: false,
         translations: AppTranslations(),

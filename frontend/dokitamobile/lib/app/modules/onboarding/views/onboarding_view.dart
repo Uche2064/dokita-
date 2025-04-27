@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../controllers/onboarding_controller.dart';
 import 'package:dokitamobile/app/routes/app_pages.dart';
 import 'package:dokitamobile/app/themes/app_colors.dart';
+import 'package:dokitamobile/app/constants/app_sizes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dokitamobile/app/translations/app_text.dart';
 import 'package:dokitamobile/app/services/storage_service.dart';
@@ -31,8 +32,9 @@ class OnboardingView extends GetView<OnboardingController> {
             ),
 
             // skip, suivant
-            Align(
-              alignment: Alignment(0.85.h, 0.55.h),
+            Positioned(
+              top: Get.height.h / 1.4.h,
+              left: Get.width.h / 1.45.h,
               child: TextButton(
                 onPressed: () {
                   controller.pageController.jumpToPage(2);
@@ -52,8 +54,9 @@ class OnboardingView extends GetView<OnboardingController> {
               }
 
               return controller.currentPage.value > 0
-                  ? Align(
-                    alignment: Alignment(-0.8.h, 0.89.h),
+                  ? Positioned(
+                    top: Get.height.h / 1.15.h,
+                    right: Get.width.h / 1.25.h,
                     child: GestureDetector(
                       onTap: () {
                         controller.pageController.previousPage(
@@ -70,10 +73,11 @@ class OnboardingView extends GetView<OnboardingController> {
                   : SizedBox.shrink();
             }),
 
-            Align(
-              alignment: Alignment(5.h, 2.1.h),
+            Positioned(
+              top: Get.height.h / 1.25.h,
+              left: Get.width.h / 3.h,
               child: Container(
-                height: 430.h,
+                height: 400.h,
                 width: 395.h,
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
@@ -83,8 +87,8 @@ class OnboardingView extends GetView<OnboardingController> {
                   children: [
                     // Le texte + l'icône ensemble
                     Positioned(
-                      top: 75.h,
-                      left: 125.h,
+                      top: 45.h,
+                      left: 115.h,
                       child: Obx(
                         () =>
                             controller.onLastPage.value
@@ -118,8 +122,9 @@ class OnboardingView extends GetView<OnboardingController> {
               ),
             ),
             // indicateur de page
-            Container(
-              alignment: Alignment(-0.90.h, -0.85.h),
+            Positioned(
+              top: 20.h,
+              left: 15.h,
               child: SmoothPageIndicator(
                 controller: controller.pageController,
                 effect: SlideEffect(

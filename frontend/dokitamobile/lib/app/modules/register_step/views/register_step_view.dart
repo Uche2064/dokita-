@@ -19,9 +19,9 @@ class RegisterStepView extends GetView<RegisterStepController> {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: AppSizes.paddingMd,
-            vertical: 8,
+            vertical: AppSizes.paddingLg,
           ),
           child: Row(
             mainAxisAlignment:
@@ -43,10 +43,10 @@ class RegisterStepView extends GetView<RegisterStepController> {
                       borderRadius: BorderRadius.circular(8.h),
                     ),
                   ),
-                  icon: Icon(Icons.arrow_back, size: 18.sp),
+                  icon: Icon(Icons.arrow_back, size: 18.h),
                   label: Text(
                     'Précédent',
-                    style: GoogleFonts.roboto(fontSize: 16.sp),
+                    style: GoogleFonts.roboto(fontSize: 16.h),
                   ),
                 ),
               ElevatedButton.icon(
@@ -66,13 +66,13 @@ class RegisterStepView extends GetView<RegisterStepController> {
                   controller.currentStep.value == controller.totalSteps - 1
                       ? Icons.check
                       : Icons.arrow_forward,
-                  size: 18.sp,
+                  size: 18.h,
                 ),
                 label: Text(
                   controller.currentStep.value == controller.totalSteps - 1
                       ? 'Valider'
                       : 'Suivant',
-                  style: GoogleFonts.roboto(fontSize: 16.sp),
+                  style: GoogleFonts.roboto(fontSize: 16.h),
                 ),
               ),
             ],
@@ -233,7 +233,7 @@ class RegisterStepView extends GetView<RegisterStepController> {
             child: Center(
               child:
                   isCompleted
-                      ? Icon(Icons.check, color: Colors.white, size: 20.sp)
+                      ? Icon(Icons.check, color: Colors.white, size: 20.h)
                       : Text(
                         '${index + 1}',
                         style: textTheme.titleMedium!.copyWith(

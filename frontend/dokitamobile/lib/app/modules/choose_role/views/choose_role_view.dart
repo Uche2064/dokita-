@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:dokitamobile/app/routes/app_pages.dart';
+import 'package:dokitamobile/app/constants/app_sizes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dokitamobile/app/translations/app_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,7 +25,7 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
         foregroundColor: color.primary,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding:  EdgeInsets.all(AppSizes.paddingMd),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -33,10 +34,10 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
               style: Get.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: color.primary,
-                fontSize: 28,
+                fontSize: AppSizes.fontSizeXLarge,
               ),
             ),
-            SizedBox(height: 40),
+            Gap(40.h),
 
             // Patient Card with Animation
             Obx(
@@ -45,11 +46,11 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
                     controller.isPatientVisible.value
                         ? Offset.zero
                         : Offset(-1.5, 0),
-                duration: Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 500),
                 curve: Curves.easeOutQuart,
                 child: AnimatedOpacity(
                   opacity: controller.isPatientVisible.value ? 1.0 : 0.0,
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 400),
                   child: _buildRoleCard(
                     title: 'Je suis un Patient',
                     icon: Icons.person,
@@ -70,11 +71,11 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
                     controller.isMedecinVisible.value
                         ? Offset.zero
                         : Offset(1.5, 0),
-                duration: Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 500),
                 curve: Curves.easeIn,
                 child: AnimatedOpacity(
                   opacity: controller.isMedecinVisible.value ? 1.0 : 0.0,
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(milliseconds: 400),
                   child: _buildRoleCard(
                     title: 'Je suis un Médecin',
                     icon: FontAwesomeIcons.kitMedical,
@@ -101,15 +102,15 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
     return Card(
       elevation: 4.h,
       shadowColor: color.withOpacity(0.4),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.h)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16.h),
         splashColor: color.withOpacity(0.2),
         highlightColor: color.withOpacity(0.1),
         child: Container(
-          padding: EdgeInsets.all(20),
-          height: 140,
+          padding: EdgeInsets.all(AppSizes.paddingMd),
+          height: 140.h,
           child: Row(
             children: [
               Container(
@@ -119,7 +120,7 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
                   color: color.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12.h),
                 ),
-                child: Icon(icon, color: color, size: 42),
+                child: Icon(icon, color: color, size: 42.h),
               ),
               Gap(20.h),
               Expanded(
@@ -129,16 +130,12 @@ class ChooseRoleView extends GetView<ChooseRoleController> {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
-                        fontSize: 22.h,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
-                      ),
+                      style: Get.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w800)
                     ),
                     Gap(8.h),
                     Text(
                       description,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      style: Get.textTheme.bodyMedium,
                     ),
                   ],
                 ),
